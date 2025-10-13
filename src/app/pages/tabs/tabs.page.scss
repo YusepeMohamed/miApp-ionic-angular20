@@ -1,0 +1,58 @@
+.custom-tab-bar {
+  --background: #ffffff;
+  --color: #888888;           
+  --color-selected: #3880ff;  
+  height: 60px;                /* altura base de la barra */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: 0 -1px 6px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Todos los botones */
+ion-tab-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home central */
+.home-tab {
+  position: relative;
+  bottom: 20%;          /* flota ligeramente sobre la barra */
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* Íconos */
+.home-tab ion-icon {
+  font-size: 28px;
+  transition: transform 0.2s, color 0.2s;
+}
+.home-tab[aria-selected="true"] ion-icon {
+  color: #3880ff;
+  transform: scale(1.2);
+}
+
+ion-tab-button[tab="search"] ion-icon,
+ion-tab-button[tab="favorites"] ion-icon {
+  font-size: 24px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+ion-tab-button[tab="search"][aria-selected="true"] ion-icon,
+ion-tab-button[tab="favorites"][aria-selected="true"] ion-icon {
+  color: #3880ff;
+  transform: scale(1.2);
+}

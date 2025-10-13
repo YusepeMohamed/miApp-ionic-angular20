@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+  <div class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-96">
+      <h2 class="text-2xl font-bold mb-6 text-center">Crear cuenta</h2>
+
+      <form (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-input [(ngModel)]="username" name="username" placeholder="Nombre de usuario" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Correo electrónico" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="first_name" name="first_name" placeholder="Nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="last_name" name="last_name" placeholder="Apellido"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Contraseña" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="password2" name="password2" type="password" placeholder="Confirmar contraseña" required></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" color="primary" class="mt-4">
+          Registrarme
+        </ion-button>
+      </form>
+
+      <p *ngIf="error" class="text-red-500 text-center mt-3">{{ error }}</p>
+      <p *ngIf="success" class="text-green-500 text-center mt-3">{{ success }}</p>
+
+      <div class="text-center mt-4">
+        <p>
+          ¿Ya tienes una cuenta?
+          <a (click)="goToLogin()" class="text-blue-600 font-semibold cursor-pointer hover:underline">
+            Iniciar sesión
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</ion-content>
