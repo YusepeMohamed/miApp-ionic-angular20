@@ -1,20 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { RouterModule } from '@angular/router';
+import { IonicModule} from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
+  standalone: true,
+  imports: [
+    CommonModule,
+    IonicModule,
+    FormsModule,
+    RouterModule
+  ],
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class SearchPage implements OnInit {
+export class SearchPage {
+  busqueda: string = '';
 
-  constructor() { }
+  cafeterias = [
+    { nombre: 'Café Central', ubicacion: 'Centro', horario: '8:00 - 20:00' },
+    { nombre: 'La Taza Feliz', ubicacion: 'Norte', horario: '9:00 - 22:00' },
+    { nombre: 'Express Café', ubicacion: 'Estación', horario: '6:00 - 18:00' },
+    { nombre: 'Café Colonial', ubicacion: 'Sur', horario: '10:00 - 23:00' },
+    { nombre: 'Aroma Café', ubicacion: 'Centro', horario: '7:30 - 21:00' },
+  ];
 
-  ngOnInit() {
+  resultados = [...this.cafeterias];
+
+  filtrarCafeterias() {
+    const termino = this.busqueda.toLowerCase();
+
+    this.resultados = this.cafeterias.filter((cafe) =>
+      cafe.nombre.toLowerCase().includes(termino) ||
+      cafe.ubicacion.toLowerCase().includes(termino)
+    );
   }
-
 }

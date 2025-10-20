@@ -1,0 +1,42 @@
+/* search.page.scss */
+
+/* Estilos para el header */
+ion-header {
+  --background: var(--ion-color-primary);  /* Fondo marrón café */
+  --color: var(--ion-color-primary-contrast); /* Texto blanco */
+}
+
+ion-toolbar {
+  --background: var(--ion-color-primary);  /* Fondo marrón café */
+}
+
+ion-title {
+  color: var(--ion-color-primary-contrast); /* Título en blanco */
+}
+
+/* Estilos para el campo de búsqueda */
+ion-searchbar {
+  --background: var(--ion-color-light);  /* Fondo claro para el campo de búsqueda */
+  --border-color: var(--ion-color-secondary); /* Borde de color caramelo claro */
+  --color: var(--ion-color-dark);  /* Texto oscuro */
+  --placeholder-color: var(--ion-color-secondary); /* Placeholder con color caramelo claro */
+}
+
+/* Estilos para los items en la lista */
+ion-item {
+  --background: var(--ion-color-light); /* Fondo claro para los ítems */
+}
+
+/* Estilos para los títulos de los ítems */
+ion-label h2 {
+  color: var(--ion-color-primary); /* Título en marrón café */
+}
+
+ion-label p {
+  color: var(--ion-color-secondary); /* Descripción en color caramelo claro */
+}
+
+/* Estilos para los íconos */
+ion-icon {
+  color: var(--ion-color-primary); /* Iconos en marrón café */
+}

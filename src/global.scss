@@ -35,3 +35,19 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+:root {
+  --ion-color-primary: #5C4033; /* Marrón café */
+  --ion-color-primary-rgb: 92, 64, 51;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #50382e;
+  --ion-color-primary-tint: #705245;
+
+  --ion-color-secondary: #D9A066; /* Caramelo claro */
+  --ion-color-secondary-rgb: 217, 160, 102;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #be8d5a;
+  --ion-color-secondary-tint: #dfaa72;
+}
