@@ -1,13 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>favorites</ion-title>
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="app-title">Guardados</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">favorites</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding vintage-bg">
+
+  <ion-card *ngIf="favorites.length === 0" class="empty-state">
+    <ion-card-content class="ion-text-center">
+      <ion-icon name="bookmark-outline" size="large" color="medium"></ion-icon>
+      <h2>No tienes publicaciones guardadas</h2>
+      <p>Guarda tus posts favoritos desde el inicio para verlos aquí.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let post of favorites" class="post-card">
+    <!-- header: avatar + user -->
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img [src]="post.avatar" alt="avatar del usuario" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ post.user }}</h2>
+        <p class="post-time">{{ post.time }}</p>
+      </ion-label>
+    </ion-item>
+
+    <!-- Texto -->
+    <ion-card-content class="post-text">
+      {{ post.content }}
+    </ion-card-content>
+
+    <!-- Imagen - aparece solo si existe -->
+    <div *ngIf="post.image" class="image-wrapper">
+      <img [src]="post.image" alt="imagen del post" class="post-image-scale" />
+    </div>
+
+    <!-- Acciones -->
+    <ion-row class="post-actions" align-items="center">
+      <ion-col class="action-col" size="4">
+        <ion-button fill="clear" (click)="toggleLike(post)" aria-label="Me gusta">
+          <ion-icon slot="icon-only" [name]="post.liked ? 'heart' : 'heart-outline'" [color]="post.liked ? 'danger' : 'medium'"></ion-icon>
+        </ion-button>
+        <span class="count">{{ post.likes }}</span>
+      </ion-col>
+
+      <ion-col class="action-col" size="4">
+        <ion-button fill="clear" (click)="$event.stopPropagation()" aria-label="Comentar">
+          <ion-icon slot="icon-only" name="chatbubble-outline" color="medium"></ion-icon>
+        </ion-button>
+        <span class="count">{{ post.comments }}</span>
+      </ion-col>
+
+      <ion-col class="action-col" size="4">
+        <ion-button fill="clear" (click)="toggleSave(post)" aria-label="Guardar">
+          <ion-icon slot="icon-only" [name]="post.saved ? 'bookmark' : 'bookmark-outline'" [color]="post.saved ? 'warning' : 'medium'"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
 </ion-content>
