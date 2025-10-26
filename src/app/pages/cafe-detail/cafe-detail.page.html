@@ -1,55 +1,57 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/search"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ cafe?.nombre }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content *ngIf="cafe as c">
+  <div class="cafe-container">
+    <!-- Imagen principal -->
+    <img
+      *ngIf="c.imagen"
+      [src]="c.imagen"
+      alt="{{ c.nombre }}"
+      class="cafe-image"
+    />
 
-  <!-- Información del café -->
-  <ion-card *ngIf="cafe">
-    <ion-card-header>
-      <ion-card-subtitle>{{ cafe.ubicacion }}</ion-card-subtitle>
-      <ion-card-title>{{ cafe.nombre }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p><strong>Horario:</strong> {{ cafe.horario }}</p>
-      <p>{{ cafe.descripcion }}</p>
-    </ion-card-content>
-  </ion-card>
+    <div class="cafe-info">
+      <h2>{{ c.nombre }}</h2>
+      <p>{{ c.descripcion }}</p>
 
-  <!-- Mapa embebido -->
-  <ion-card *ngIf="safeMapUrl">
-    <iframe
-      width="100%"
-      height="200"
-      frameborder="0"
-      style="border:0"
-      [src]="safeMapUrl"
-      allowfullscreen>
-    </iframe>
-  </ion-card>
-
-  <!-- Reseñas -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Reseñas</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label>
-          <p><strong>Laura</strong>: Excelente café y atención. 🌟🌟🌟🌟🌟</p>
-        </ion-label>
+      <ion-item lines="none">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        <ion-label>{{ c.ubicacion }}</ion-label>
       </ion-item>
-      <ion-item>
-        <ion-label>
-          <p><strong>Martín</strong>: Me encantó el ambiente. ☕</p>
-        </ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+    </div>
 
+    <!-- Reseñas -->
+    <div class="resenas-section" *ngIf="c.resenas.length > 0; else noResenas">
+      <h3>Reseñas</h3>
+
+      <ion-list>
+        <ion-item *ngFor="let r of c.resenas" lines="none">
+          <ion-avatar slot="start">
+            <img [src]="r.usuarioAvatar || 'assets/default-avatar.png'" />
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{ r.usuario }}</h2>
+            <p>{{ r.comentario }}</p>
+          </ion-label>
+
+          <ion-icon name="star" color="warning" slot="end"></ion-icon>
+          <span slot="end">{{ r.puntuacion }}/5</span>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <ng-template #noResenas>
+      <div class="no-resenas">
+        <p>Este café aún no tiene reseñas.</p>
+      </div>
+    </ng-template>
+  </div>
 </ion-content>

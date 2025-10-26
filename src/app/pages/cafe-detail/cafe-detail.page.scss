@@ -1,7 +1,28 @@
-:root {
-  --ion-color-primary: #5C4033;  /* Marrón café */
-  --ion-color-secondary: #D9A066;
+.cafe-container {
+  text-align: center;
+  padding: 16px;
 }
-ion-content {
-  --background: #fdf7f0;
+
+.cafe-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cafe-info {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.resenas-section {
+  margin-top: 24px;
+}
+
+.no-resenas {
+  margin-top: 20px;
+  font-style: italic;
+  color: #777;
 }

@@ -1,26 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Buscar Cafeterías</ion-title>
+  <ion-toolbar color="light">
+    <ion-title>Buscar Cafés</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-searchbar
-    [(ngModel)]="busqueda"
-    (ionInput)="filtrarCafeterias()"
-    placeholder="Buscar por nombre o ubicación"
-    clearInput
-  >
-    <ion-icon name="search" slot="start" color="primary"></ion-icon>
-  </ion-searchbar>
+<ion-content class="ion-padding">
+  <ion-searchbar placeholder="Buscar por nombre o ubicación" debounce="300"></ion-searchbar>
 
   <ion-list>
-    <ion-item *ngFor="let cafe of resultados" button [routerLink]="['/cafe-detail', cafe.nombre]">
+    <ion-item
+      *ngFor="let cafe of cafes"
+      [routerLink]="['/cafe-detail', cafe.id]"
+      detail
+      class="cafe-item"
+    >
+      <ion-avatar slot="start">
+        <img [src]="cafe.imagen || 'assets/default-cafe.jpg'" alt="{{ cafe.nombre }}" />
+      </ion-avatar>
+
       <ion-label>
         <h2>{{ cafe.nombre }}</h2>
-        <p>{{ cafe.ubicacion }}</p>
-        <p><ion-icon name="time-outline"></ion-icon> {{ cafe.horario }}</p>
+        <p class="muted">{{ cafe.ubicacion }} — {{ cafe.descripcion }}</p>
       </ion-label>
+
+      <ion-note slot="end" class="resenas-count">
+        {{ cafe.resenas.length }} reseñas
+      </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>
