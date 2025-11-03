@@ -37,7 +37,7 @@ export class SearchPage implements OnInit {
         nombre: 'Café Central',
         descripcion: 'Un clásico del centro con ambiente acogedor y el mejor espresso artesanal.',
         ubicacion: 'Av. Principal 123, Asunción',
-        imagen: 'assets/posts/cafeteria1.jpg',
+        imagen: 'assets/posts/cafe1.webp',
         resenas: [
           { usuario: 'María López', comentario: 'Excelente atención y el cappuccino delicioso ☕', puntuacion: 5, usuarioAvatar: 'https://i.pravatar.cc/150?img=5' },
           { usuario: 'Carlos Pérez', comentario: 'Buen ambiente, aunque el lugar es pequeño.', puntuacion: 4, usuarioAvatar: 'https://i.pravatar.cc/150?img=3' }
